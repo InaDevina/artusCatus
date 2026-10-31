@@ -136,27 +136,24 @@ img {
 }
 
 /* ========================================
-   ABOUT US
+   WHY ARTUS CATUS (ABOUT SECTION - HOME)
 ======================================== */
 
 .about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 48px;
-    padding-top: 30px;
-    padding-bottom: 80px;
+    gap: 60px;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 60px;
 }
 
 .stat-item h3 {
-    font-size: clamp(26px, 3vw, 34px);
-    line-height: 1.2;
+    font-size: 34px;
     margin-bottom: 6px;
 }
 
@@ -164,6 +161,144 @@ img {
     font-size: 13px;
     color: var(--text-muted);
 }
+
+
+/* ABOUT US PAGE */
+
+.about-page {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: #354247;
+}
+
+.about-header {
+    text-align: center;
+    background-color: #e9edef;
+    padding: 55px 20px;
+}
+
+.about-header h1 {
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.about-header p {
+    font-size: 15px;
+    color: #667176;
+}
+
+.about-history,
+.about-purpose {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 55px 8%;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5b666b;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 0;
+    height: 260px;
+    background-color: #dce1e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7f8b90;
+    border-radius: 4px;
+}
+
+.about-purpose {
+    background-color: #edf0f1;
+}
+
+.about-values {
+    padding: 50px 8% 70px;
+}
+
+.about-values h2 {
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+.value-item {
+    padding: 10px;
+}
+
+.value-icon {
+    background-color: #dce1e3;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #677277;
+}
+
+@media (max-width: 768px) {
+    .about-history
+    .about-purpose {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 6%;
+    }
+
+    .about-image {
+        width: 100%;
+        min-height: 230px;
+    }
+
+    .about-image {
+        min-height: 230px;
+    }
+
+    .values-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-header h1 {
+        font-size: 34px;
+    }
+}
+
 
 
 /* ========================================
@@ -272,6 +407,112 @@ img {
 
     .testimonials-section {
         padding: 50px 0;
+    }
+}
+
+/*CATALOG PAGE*/
+
+.catalog-header {
+    text-align: center;
+    background-color: var(--platinum);
+    padding: 45px 20px;
+    margin-bottom: 40px;
+}
+
+.catalog-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.catalog-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.products-section,
+.testimonial-section {
+    width: calc(100% - var(--page-padding) * 2);
+    max-width: var(--container-width);
+    margin: 0 auto 60px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.catalog-page .product-card {
+    border: 1px solid var(--light-blue-grey);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.catalog-page .product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--placeholder);
+}
+
+.product-info {
+    padding: 14px;
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--midnight);
+    margin-bottom: 6px;
+}
+
+.testimonial-section h2 {
+    font-size: clamp(26px, 3vw, 34px);
+    margin-bottom: 20px;
+}
+
+.testimonial-list {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.catalog-page .testimonial-card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    padding: 24px;
+}
+
+.testimonial-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.catalog-page .testimonial-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.catalog-page .testimonial-card h3 {
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .catalog-page .testimonial-card {
+        flex-basis: 260px;
     }
 }
 
