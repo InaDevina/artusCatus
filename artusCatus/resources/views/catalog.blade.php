@@ -34,9 +34,13 @@
         <div class="testimonial-list">
             @foreach ($testimonials as $testimonial)
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">🩷</div>
-                    <p>{{ $testimonial['message'] }}</p>
-                    <h3>{{ $testimonial['name'] }}</h3>
+                    <div class="testimonial-rating">
+                        @for ($i = 0; $i < $testimonial->rating; $i++)
+                            <span>⭐</span>
+                        @endfor
+                    </div>
+                    <p>{{ $testimonial->message }}</p>
+                    <h3>{{ $testimonial->name }}</h3>
                 </div>
             @endforeach
         </div>
