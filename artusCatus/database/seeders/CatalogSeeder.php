@@ -49,5 +49,40 @@ class CatalogSeeder extends Seeder
             'price' => 55000,
             'image' => 'images/products/product-5.jpeg'
         ]);
+        Catalog::create([
+            'name' => 'Purple Labradorite Rosary Bracelet',
+            'description' => 'a combination of purple glass beads and Labradorite
+            stone, creating a unique and calming sense for your prayers.',
+            'price' => 45000,
+            'image' => 'images/products/product-6.jpeg'
+        ]);
+        Catalog::create([
+            'name' => 'Rosie Mocha Rosary Bracelet',
+            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
+            for a elegance and poised style to accompany you while you pray.',
+            'price' => 45000,
+            'image' => 'images/products/product-7.jpeg'
+        ]);
+        Catalog::create([
+            'name' => 'Rosie Mocha Rosary Bracelet',
+            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
+            for a elegance and poised style to accompany you while you pray.',
+            'price' => 45000,
+            'image' => 'images/products/product-8.jpeg'
+        ]);
+        Catalog::create([
+            'name' => 'Rosie Mocha Rosary Bracelet',
+            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
+            for a elegance and poised style to accompany you while you pray.',
+            'price' => 45000,
+            'image' => 'images/products/product-9.jpeg'
+        ]);
+        Catalog::create([
+            'name' => 'Rosie Mocha Rosary Bracelet',
+            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
+            for a elegance and poised style to accompany you while you pray.',
+            'price' => 45000,
+            'image' => 'images/products/product-10.jpeg'
+        ]);
     }
 }

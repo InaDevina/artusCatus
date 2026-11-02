@@ -15,13 +15,15 @@
         </div>
 
         <div class="about-image">
-            <span>misal : foto bts pembuatan></span>
+            <img src="{{ asset('images/products/aboutUs-1.jpg') }}"
+            alt="Artus Catus crafting process">
         </div>
     </section>
 
     <section class="about-purpose">
         <div class="about-image">
-            <span>misal : foto customer beli></span>
+            <img src="{{ asset('images/products/aboutUs-2.jpg') }}"
+            alt="Artus Catus customer experience">
         </div>
 
         <div class="about-text">
