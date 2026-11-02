@@ -414,7 +414,7 @@ img {
 
 .catalog-header {
     text-align: center;
-    background-color: var(--platinum);
+    background-color: var(--light-blue-grey);
     padding: 45px 20px;
     margin-bottom: 40px;
 }
@@ -426,7 +426,7 @@ img {
 
 .catalog-header p {
     font-size: 15px;
-    color: var(--text-muted);
+    color: var(--midnight);
 }
 
 .products-section,
@@ -576,8 +576,8 @@ img {
 
 .site-header {
     width: 100%;
-    background-color: var(--platinum);
-    border-bottom: 1px solid var(--light-blue-grey);
+    background-color: var(--baby-blue);
+    border-bottom: 1px solid var(--cerulean);
 }
 
 .navbar {
@@ -615,7 +615,7 @@ img {
 }
 
 .navbar-menu a:hover {
-    color: #527DA5;
+    color: var(--white);
 }
 
 /* ========================================
@@ -626,8 +626,8 @@ img {
     padding: 24px 5%;
     margin-top: 40px;
 
-    background-color: var(--platinum);
-    color: var(--midnight);
+    background-color: var(--midnight);
+    color: var(--white);
     text-align: center;
     font-size: 13px;
 }
