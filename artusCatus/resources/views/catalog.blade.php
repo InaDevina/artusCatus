@@ -16,10 +16,10 @@
                          alt="{{ $product->name }}">
                     <div class="product-info">
                         <h3>{{ $product->name }}</h3>
-                        <p class="product-price">
+                        <p>{{ $product->description }}</p>
+                        <h3 class="product-price">
                             Rp {{ number_format($product->price, 0, ',', '.') }}
-                        </p>
-                        <p>{{ $product->desc }}</p>
+                        </h3>
                     </div>
                 </div>
 

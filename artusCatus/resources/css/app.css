@@ -330,7 +330,7 @@ img {
 
 .product-card h3 {
     font-size: 17px;
-    line-height: 1.4;
+    line-height: 2;
     margin-bottom: 6px;
 }
 
@@ -443,6 +443,8 @@ img {
 }
 
 .catalog-page .product-card {
+    display: flex;
+    flex-direction: column; 
     border: 1px solid var(--light-blue-grey);
     border-radius: 12px;
     overflow: hidden;
@@ -456,13 +458,18 @@ img {
 }
 
 .product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     padding: 14px;
 }
 
 .product-price {
+    margin-top: auto;
+    padding-top: 10px; 
     font-weight: 700;
     color: var(--midnight);
-    margin-bottom: 6px;
+    margin-bottom: 0;
 }
 
 .testimonial-section h2 {
