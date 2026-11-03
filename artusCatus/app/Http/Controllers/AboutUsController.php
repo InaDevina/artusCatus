@@ -8,7 +8,7 @@ class AboutUsController extends Controller
 {
     public function about(){
         return view('aboutUs', [
-            'title' => 'About | Artus Catus',
+            'title' => 'About Us | Artus Catus',
             'subtitle' => 'More than just handmade creations, it is about our story, values, and purpose.',
             'pagetitle' => 'About Us',
             'history' => "Artus Catus was born from a simple love for creativity and handmade crafts.

@@ -1,39 +1,48 @@
 @extends('layouts.mainlayout')
-
 @section('title', 'Home | Artus Catus')
-
 @section('content')
+
 <div class="home-container">
 
     <section class="hero">
         <div class="hero-content">
             <h1>Artus Catus</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Discover thoughtful handmade creations designed to add a
+                personal touch to your everyday life. From charming accessories
+                to meaningful bracelet rosaries, every piece is made with care
+                and creativity.
             </p>
-            <a href="/catalog" class="button-primary">Lorem Ipsum</a>
+            <a href="/catalog" class="button-primary">Explore Our Catalog</a>
         </div>
-
-        <div class="placeholder hero-image"></div>
+        <img src="{{ asset('images/products/home.jpg') }}" alt="Handmade creations" class="hero-image">
     </section>
 
     <section class="section catalog-section">
         <div class="section-intro">
             <h2>Top Products</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Explore some of our handmade favorites, thoughtfully created
+                to bring joy to your everyday moments.
             </p>
         </div>
 
         <div class="product-grid">
-            @for ($i = 0; $i < 3; $i++)
+            @forelse ($products as $product)
                 <article class="product-card">
-                    <div class="placeholder product-image"></div>
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="product-image">
+                        <img
+                            src="{{ asset($product->image) }}"
+                            alt="{{ $product->name }}"
+                        >
+                    </div>
+
+                    <h3>{{ $product->name }}</h3>
+                    <p>{{ $product->description }}</p>
                 </article>
-            @endfor
+            @empty
+                <p>No products available yet.</p>
+            @endforelse
         </div>
     </section>
 
@@ -41,58 +50,68 @@
         <div class="section-intro">
             <h2>Why Artus Catus?</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+                At Artus Catus, we believe handmade creations can make everyday
+                moments more special. Each piece is thoughtfully crafted to
+                bring joy, express your personality, and add meaning to the
+                little things in life.
             </p>
         </div>
 
         <div class="stats-grid">
             <div class="stat-item">
                 <h3>10+</h3>
-                <p>Lorem ipsum dolor</p>
+                <p>Unique Designs</p>
             </div>
+
             <div class="stat-item">
                 <h3>100+</h3>
-                <p>Lorem ipsum dolor</p>
+                <p>Happy Customers</p>
             </div>
+
             <div class="stat-item">
                 <h3>500+</h3>
-                <p>Lorem ipsum dolor</p>
+                <p>Products Sold</p>
             </div>
+
             <div class="stat-item">
                 <h3>95%</h3>
-                <p>Lorem ipsum dolor</p>
+                <p>Customer Satisfaction</p>
             </div>
         </div>
     </section>
-    
+
     <section class="section testimonials-section">
         <div class="section-intro">
             <h2>Testimonials</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed posuere consectetur est at lobortis.
+                Read what our customers have to say about their
+                Artus Catus handmade creations.
             </p>
         </div>
 
         <div class="testimonials-grid">
-            @for ($i = 0; $i < 3; $i++)
+            @forelse ($testimonials as $testimonial)
                 <article class="testimonial-card">
-                    <div class="placeholder testimonial-image"></div>
 
                     <div class="testimonial-content">
-                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-rating">
+                            @for ($i = 1; $i <= $testimonial->rating; $i++)
+                                <span>⭐</span>
+                            @endfor
+                        </div>
 
                         <p>
-                            "Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Integer posuere erat a ante."
+                            "{{ $testimonial->message }}"
                         </p>
 
-                        <h3>Lorem Ipsum</h3>
+                        <h3>{{ $testimonial->name }}</h3>
                         <span>Customer</span>
                     </div>
+
                 </article>
-            @endfor
+            @empty
+                <p>No testimonials available yet.</p>
+            @endforelse
         </div>
     </section>
 
