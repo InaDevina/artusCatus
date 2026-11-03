@@ -15,6 +15,12 @@
 
     --container-width: 1440px;
     --page-padding: 4%;
+
+    /* [BARU] variabel tambahan untuk efek */
+    --bg-soft: #F4F8FC;
+    --midnight-light: #30466E;
+    --shadow-soft: 0 4px 14px rgba(28, 43, 72, 0.08);
+    --shadow-hover: 0 12px 28px rgba(28, 43, 72, 0.16);
 }
 
 /* Reset */
@@ -31,7 +37,15 @@ html {
 body {
     font-family: Arial, sans-serif;
     color: var(--midnight);
-    background-color: var(--white);
+    background-color: var(--bg-soft); /* [UBAH] dari var(--white) */
+    /* [BARU] motif titik halus + glow biru, biar background gak polos */
+    background-image:
+        radial-gradient(circle at 8% 15%, rgba(167, 199, 231, 0.45) 0, transparent 35%),
+        radial-gradient(circle at 92% 55%, rgba(142, 177, 209, 0.35) 0, transparent 35%),
+        radial-gradient(circle at 20% 90%, rgba(196, 216, 229, 0.50) 0, transparent 35%),
+        radial-gradient(rgba(142, 177, 209, 0.35) 1.5px, transparent 1.5px);
+    background-size: auto, auto, auto, 26px 26px;
+    background-attachment: fixed;
     line-height: 1.6;
 }
 
@@ -95,8 +109,10 @@ img {
     margin: 24px 0 64px;
     padding: 44px;
 
-    background-color: var(--light-blue-grey);
+    /* [UBAH] dari warna flat jadi gradasi biru */
+    background: linear-gradient(135deg, var(--light-blue-grey) 0%, var(--baby-blue) 100%);
     border-radius: 24px;
+    box-shadow: var(--shadow-soft); /* [BARU] */
     overflow: hidden;
 }
 
@@ -118,16 +134,18 @@ img {
     padding: 11px 24px;
 
     color: var(--white);
-    background-color: var(--midnight);
+    background: linear-gradient(135deg, var(--midnight), var(--midnight-light)); /* [UBAH] */
     text-decoration: none;
     font-size: 14px;
 
     border-radius: 30px;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(28, 43, 72, 0.25); /* [BARU] */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* [UBAH] */
 }
 
 .button-primary:hover {
-    background-color: #30466E;
+    transform: translateY(-2px); /* [UBAH] dari ganti warna jadi naik sedikit */
+    box-shadow: 0 8px 18px rgba(28, 43, 72, 0.3);
 }
 
 .hero-image {
@@ -136,27 +154,24 @@ img {
 }
 
 /* ========================================
-   ABOUT US
+   WHY ARTUS CATUS (ABOUT SECTION - HOME)
 ======================================== */
 
 .about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 48px;
-    padding-top: 30px;
-    padding-bottom: 80px;
+    gap: 60px;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 60px;
 }
 
 .stat-item h3 {
-    font-size: clamp(26px, 3vw, 34px);
-    line-height: 1.2;
+    font-size: 34px;
     margin-bottom: 6px;
 }
 
@@ -166,9 +181,172 @@ img {
 }
 
 
-/* ========================================
-   PRODUCT CATALOG
-======================================== */
+/* ABOUT US PAGE */
+
+.about-page {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: #354247;
+}
+
+/* HEADER */
+.about-header {
+    text-align: center;
+    /* [UBAH] dari #e9edef (abu) jadi gradasi biru */
+    background: linear-gradient(135deg, var(--light-blue-grey), var(--baby-blue));
+    padding: 55px 20px;
+}
+
+.about-header h1 {
+    font-size: 52px;      /* [UBAH] dari 42px */
+    line-height: 1.2;     /* [BARU] ngurangin jarak bawaan dari body (1.6) */
+    margin-bottom: 8px;   /* [UBAH] dari 12px */
+    color: var(--midnight); /* [BARU] */
+}
+
+.about-header p {
+    font-size: 19px;      /* [UBAH] dari 15px */
+    line-height: 1.5;     /* [BARU] */
+    color: var(--midnight); /* [UBAH] dari #667176 biar kebaca di bg biru */
+}
+
+/* HISTORY AND PURPOSE */
+.about-history,
+.about-purpose {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 55px 8%;
+}
+
+/* TEXT */
+.about-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-text h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: var(--midnight); /* [BARU] */
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #5b666b;
+}
+
+/* IMAGE CONTAINER */
+.about-image {
+    flex: 1;
+    min-width: 0;
+    height: 260px;
+    background-color: #dce1e3;
+    border-radius: 16px; /* [UBAH] dari 4px */
+    box-shadow: var(--shadow-soft); /* [BARU] */
+    overflow: hidden;
+}
+
+/* IMAGE INSIDE CONTAINER */
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* PURPOSE SECTION */
+.about-purpose {
+    background-color: #E6EFF8; /* [UBAH] dari #edf0f1 (abu) jadi biru muda */
+}
+
+/* VALUES */
+.about-values {
+    padding: 50px 8% 70px;
+}
+
+.about-values h2 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+.value-item {
+    padding: 20px 16px; /* [UBAH] dari 10px */
+    background-color: var(--white); /* [BARU] jadi kartu */
+    border: 1px solid var(--light-blue-grey);
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-icon {
+    background: linear-gradient(135deg, var(--baby-blue), var(--cerulean)); /* [UBAH] dari abu */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.value-item h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.value-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #677277;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .about-history,
+    .about-purpose {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 6%;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .about-image {
+        flex: none;
+        width: 100%;
+        height: 230px;
+    }
+
+    .values-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-header h1 {
+        font-size: 34px;
+    }
+}
+
+
+/* PRODUCT CATALOG */
 
 .catalog-section {
     display: flex;
@@ -195,7 +373,7 @@ img {
 
 .product-card h3 {
     font-size: 17px;
-    line-height: 1.4;
+    line-height: 2;
     margin-bottom: 6px;
 }
 
@@ -208,7 +386,7 @@ img {
 
 /* TESTIMONIALS */
 .testimonials-section {
-    background-color: var(--white);
+    background-color: transparent; /* [UBAH] dari var(--white) biar ikut bg halaman */
 }
 
 .testimonials-grid {
@@ -223,6 +401,13 @@ img {
     background-color: var(--white);
     border: 1px solid var(--light-blue-grey);
     border-radius: 12px;
+    box-shadow: var(--shadow-soft); /* [BARU] */
+    transition: transform 0.25s ease, box-shadow 0.25s ease; /* [BARU] */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px); /* [BARU] */
+    box-shadow: var(--shadow-hover);
 }
 
 .testimonial-image {
@@ -272,6 +457,157 @@ img {
 
     .testimonials-section {
         padding: 50px 0;
+    }
+}
+
+/*CATALOG PAGE*/
+
+.catalog-header {
+    text-align: center;
+    /* [UBAH] dari warna flat jadi gradasi biru + garis bawah */
+    background: linear-gradient(135deg, var(--light-blue-grey) 0%, var(--baby-blue) 100%);
+    border-bottom: 1px solid var(--cerulean);
+    padding: 45px 20px;
+    margin-bottom: 40px;
+}
+
+.catalog-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.catalog-header p {
+    font-size: 15px;
+    color: var(--midnight);
+}
+
+.products-section,
+.testimonial-section {
+    width: calc(100% - var(--page-padding) * 2);
+    max-width: var(--container-width);
+    margin: 0 auto 60px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.catalog-page .product-card {
+    display: flex;
+    flex-direction: column; 
+    background-color: var(--white); /* [BARU] */
+    border: 1px solid var(--light-blue-grey);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft); /* [BARU] */
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; /* [BARU] */
+}
+
+/* [BARU] efek hover kartu produk */
+.catalog-page .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--cerulean);
+}
+
+.catalog-page .product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--placeholder);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px;
+}
+
+.product-price {
+    margin-top: auto;
+    padding-top: 10px; 
+    font-weight: 700;
+    color: var(--midnight);
+    margin-bottom: 0;
+}
+
+.testimonial-section h2 {
+    font-size: clamp(26px, 3vw, 34px);
+    margin-bottom: 20px;
+    /* [BARU] garis aksen di bawah judul */
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 4px solid var(--baby-blue);
+}
+
+.testimonial-list {
+    display: flex;
+    gap: 20px;
+    padding: 6px 4px 16px; /* [UBAH] ditambah ruang atas/samping biar shadow gak kepotong */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* [BARU] scrollbar warna biru */
+    scrollbar-color: var(--cerulean) var(--platinum);
+}
+
+/* [BARU] scrollbar versi Chrome/Edge/Safari */
+.testimonial-list::-webkit-scrollbar {
+    height: 10px;
+}
+
+.testimonial-list::-webkit-scrollbar-track {
+    background: var(--platinum);
+    border-radius: 10px;
+}
+
+.testimonial-list::-webkit-scrollbar-thumb {
+    background: var(--cerulean);
+    border-radius: 10px;
+}
+
+.testimonial-list::-webkit-scrollbar-thumb:hover {
+    background: var(--midnight-light);
+}
+
+.catalog-page .testimonial-card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    padding: 24px;
+    border-left: 4px solid var(--baby-blue); /* [BARU] garis aksen kiri */
+}
+
+.testimonial-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.catalog-page .testimonial-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.catalog-page .testimonial-card h3 {
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .catalog-page .testimonial-card {
+        flex-basis: 260px;
     }
 }
 
@@ -328,8 +664,14 @@ img {
 
 .site-header {
     width: 100%;
-    background-color: var(--platinum);
-    border-bottom: 1px solid var(--light-blue-grey);
+    /* [UBAH] navbar jadi biru gelap (midnight) supaya beda dari judul halaman */
+    background: linear-gradient(90deg, var(--midnight) 0%, var(--midnight-light) 100%);
+    border-bottom: 3px solid var(--baby-blue); /* [UBAH] garis aksen biru muda */
+    box-shadow: 0 4px 14px rgba(28, 43, 72, 0.25); /* [BARU] */
+    /* [BARU] navbar tetap nempel di atas saat scroll */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar {
@@ -345,7 +687,7 @@ img {
 }
 
 .navbar-logo {
-    color: var(--midnight);
+    color: var(--white); /* [UBAH] dari var(--midnight) karena navbar sekarang gelap */
     font-size: 23px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -360,14 +702,28 @@ img {
 }
 
 .navbar-menu a {
-    color: var(--midnight);
+    position: relative; /* [BARU] */
+    padding: 4px 0;     /* [BARU] */
+    color: var(--platinum); /* [UBAH] dari var(--midnight) */
     font-size: 14px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.navbar-menu a:hover {
-    color: #527DA5;
+/* [UBAH] hover dari ganti warna putih (kurang kebaca) jadi garis bawah animasi */
+.navbar-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--baby-blue); /* [UBAH] dari var(--midnight) */
+    transition: width 0.25s ease;
+}
+
+.navbar-menu a:hover::after {
+    width: 100%;
 }
 
 /* ========================================
@@ -378,8 +734,9 @@ img {
     padding: 24px 5%;
     margin-top: 40px;
 
-    background-color: var(--platinum);
-    color: var(--midnight);
+    /* [UBAH] dari warna flat jadi gradasi */
+    background: linear-gradient(135deg, var(--midnight) 0%, var(--midnight-light) 100%);
+    color: var(--white);
     text-align: center;
     font-size: 13px;
 }

@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Catalog;
+use App\Models\Testimonial;
 
 class CatalogController extends Controller
 {
     public function index(){
-        $products = [
-            [
-                'name' => '',
-                'description' => '',
-                'price' => '',
-                'image' => ''
-            ]
-        ];
-
+        $products = Catalog::take(10)->get();
+        $testimonials = Testimonial::take(6)->get();
         return view('catalog', [
-            'title' => 'Catalog',
-            'pagetitle' => 'Catalog',
-            'products' => $products
+            'title' => 'Catalog | Artus Catus',
+            'pagetitle' => 'Our Catalog',
+            'subtitle' => 'Discover our handmade creations, made with love and attention to every detail.',
+            'products' => $products,
+            'testimonials' => $testimonials
         ]);
     }
 }

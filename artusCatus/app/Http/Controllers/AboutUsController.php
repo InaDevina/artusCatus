@@ -8,7 +8,8 @@ class AboutUsController extends Controller
 {
     public function about(){
         return view('aboutUs', [
-            'title' => 'About',
+            'title' => 'About | Artus Catus',
+            'subtitle' => 'More than just handmade creations, it is about our story, values, and purpose.',
             'pagetitle' => 'About Us',
             'history' => "Artus Catus was born from a simple love for creativity and handmade crafts.
                         I've always been someone who enjoys creating things with my own hands, turning
@@ -28,7 +29,24 @@ class AboutUsController extends Controller
                         personal and uniquely theirs. With our handmade bracelet rosaries, I also hope to help people feel more confident
                         in expressing their faith and strengthening their spiritual connection.
                         Above all, I want every creation to carry a little meaning beyond its appearance.",
-            'values' => ""
+            'values' => [
+                [
+                    'name' => 'Quality',
+                    'description' => 'Every creation is crafted with attention to detail.',
+                ],
+                [
+                    'name' => 'Care',
+                    'description' => 'Prioritizing customer happiness and satisfaction',
+                ],
+                [
+                    'name' => 'Integrity',
+                    'description' => 'Being honest and responsible throughout every process.',
+                ],
+                [
+                    'name' => 'Creativity',
+                    'description' => 'Continuously developing new ideas and creations.',
+                ]
+            ]
         ]);
     }
 }
