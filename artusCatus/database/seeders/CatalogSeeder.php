@@ -51,37 +51,40 @@ class CatalogSeeder extends Seeder
         ]);
         Catalog::create([
             'name' => 'Purple Labradorite Rosary Bracelet',
-            'description' => 'a combination of purple glass beads and Labradorite
+            'description' => 'A combination of purple glass beads and Labradorite
             stone, creating a unique and calming sense for your prayers.',
             'price' => 45000,
             'image' => 'images/products/product-6.jpeg'
         ]);
         Catalog::create([
             'name' => 'Rosie Mocha Rosary Bracelet',
-            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
+            'description' => 'A mix of Mocha hued acrylic beads with rose pearl beads
             for a elegance and poised style to accompany you while you pray.',
             'price' => 45000,
             'image' => 'images/products/product-7.jpeg'
         ]);
         Catalog::create([
-            'name' => 'Rosie Mocha Rosary Bracelet',
-            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
-            for a elegance and poised style to accompany you while you pray.',
-            'price' => 45000,
+            'name' => 'Blue Coral Bracelet',
+            'description' => 'A simplistic design with a purple charm as the main eye attraction.
+            Made with glass and acrylic beads, it ll bring a sense of calmness and serenity as you
+            wear it. (PSA: I do not recommend wearing this to showers)',
+            'price' => 55000,
             'image' => 'images/products/product-8.jpeg'
         ]);
         Catalog::create([
-            'name' => 'Rosie Mocha Rosary Bracelet',
-            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
-            for a elegance and poised style to accompany you while you pray.',
-            'price' => 45000,
+            'name' => 'Matcha Beryl Bracelet',
+            'description' => 'A beautiful green themed bracelet that fits with any day to day outfit.
+            Made with round Beryl stones, acrylic and gold lined beads.
+            (PSA: I do not recommend wearing this to showers)',
+            'price' => 85000,
             'image' => 'images/products/product-9.jpeg'
         ]);
         Catalog::create([
-            'name' => 'Rosie Mocha Rosary Bracelet',
-            'description' => 'a mix of Mocha hued acrylic beads with rose pearl beads
-            for a elegance and poised style to accompany you while you pray.',
-            'price' => 45000,
+            'name' => 'Shadow Bracelet',
+            'description' => 'Made with 10mm glass beads, it suits those who keeps everything simple
+            yet still stylish at the same time.
+            (PSA: I do not recommend wearing this to showers)',
+            'price' => 120000,
             'image' => 'images/products/product-10.jpeg'
         ]);
     }
