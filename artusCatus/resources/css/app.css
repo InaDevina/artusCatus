@@ -1,5 +1,8 @@
-/* ARTUS CATUS - GLOBAL STYLES */
+/* ========================================
+   ARTUS CATUS - GLOBAL STYLES
+======================================== */
 
+/* [BARU] Font dari Google Fonts: Fraunces (judul) + DM Sans (teks) */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@500;600;700&display=swap');
 
 :root {
@@ -16,19 +19,23 @@
     --container-width: 1440px;
     --page-padding: 4%;
 
+    /* [BARU] variabel tambahan untuk efek */
     --bg-soft: #F4F8FC;
     --midnight-light: #30466E;
     --shadow-soft: 0 4px 14px rgba(28, 43, 72, 0.08);
     --shadow-hover: 0 12px 28px rgba(28, 43, 72, 0.16);
 
+    /* [BARU] font */
     --font-heading: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', Arial, sans-serif;
 
+    /* [BARU] warna untaian manik-manik (lihat bagian BEAD STRAND) */
     --bead-a: var(--cerulean);
     --bead-b: var(--midnight-light);
     --thread: var(--baby-blue);
 }
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -40,9 +47,10 @@ html {
 }
 
 body {
-    font-family: var(--font-body); 
+    font-family: var(--font-body); /* [UBAH] dari Arial */
     color: var(--midnight);
-    background-color: var(--bg-soft);
+    background-color: var(--bg-soft); /* [UBAH] dari var(--white) */
+    /* [BARU] motif titik halus + glow biru, biar background gak polos */
     background-image:
         radial-gradient(circle at 8% 15%, rgba(167, 199, 231, 0.45) 0, transparent 35%),
         radial-gradient(circle at 92% 55%, rgba(142, 177, 209, 0.35) 0, transparent 35%),
@@ -62,6 +70,7 @@ img {
     max-width: 100%;
 }
 
+/* [BARU] semua judul pakai font Fraunces */
 h1,
 h2,
 h3 {
@@ -70,14 +79,16 @@ h3 {
     letter-spacing: -0.01em;
 }
 
-
+/* [BARU] garis fokus saat navigasi pakai keyboard */
 a:focus-visible,
 summary:focus-visible {
     outline: 3px solid var(--cerulean);
     outline-offset: 3px;
 }
 
-/* SHARED LAYOUT */
+/* ========================================
+   SHARED LAYOUT
+======================================== */
 
 .home-container {
     width: calc(100% - var(--page-padding) * 2);
@@ -86,20 +97,26 @@ summary:focus-visible {
 }
 
 .section {
-    margin-bottom: 96px; 
+    margin-bottom: 96px; /* [UBAH] dari 80px, lebih lega */
 }
 
 .section h2 {
-    font-size: clamp(30px, 3.4vw, 42px); 
+    font-size: clamp(30px, 3.4vw, 42px); /* [UBAH] dari clamp(26px, 3vw, 34px) */
     line-height: 1.15;
     margin-bottom: 16px;
 }
 
 .section-intro {
-    max-width: 520px; 
+    max-width: 520px; /* [UBAH] dari 420px */
 }
 
+/* ========================================
+   BEAD STRAND (motif manik-manik khas Artus Catus)
+   Untaian kecil: 2 warna manik + 1 benang.
+   Warnanya bisa diganti lewat variabel --bead-a, --bead-b, --thread
+======================================== */
 
+/* 1. Gambar untaiannya (dipakai di semua tempat di bawah) */
 .section h2::after,
 .testimonial-section h2::after,
 .faq-section h2::after,
@@ -973,18 +990,22 @@ img.hero-image {
     letter-spacing: 1.5px;
     text-decoration: none;
     white-space: nowrap;
+
+    /* [BARU] gambar logo dan tulisan ARTUS CATUS sejajar */
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-/* [BARU] titik kecil di depan logo (mengingatkan pada manik-manik) */
-.navbar-logo::before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 12px;
-    vertical-align: middle;
+.navbar-logo-img,
+.navbar-logo img {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;       /* stops the image from being squeezed or stretched by flex */
+    object-fit: cover;
+    background-color: var(--white);
     border-radius: 50%;
-    background-color: var(--baby-blue);
+    padding: 0;           /* your logo is already a circle, so no inner padding needed */
 }
 
 /* [UBAH] menu dibungkus kapsul sendiri di dalam navbar */
@@ -1004,6 +1025,7 @@ img.hero-image {
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
+    white-space: nowrap; 
     border-radius: 999px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }

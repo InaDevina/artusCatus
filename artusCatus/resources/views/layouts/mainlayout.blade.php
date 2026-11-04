@@ -12,7 +12,10 @@
 <body>
     <header class="site-header">
         <nav class="navbar">
-            <a href="/" class="navbar-logo">ARTUS CATUS</a>
+            <a href="/" class="navbar-logo">
+                <img src="{{ asset('images/products/logo artuscatus.png') }}" alt="Artus Catus Logo" class="logo-image">
+                <span class="logo-text">ARTUS CATUS</span>
+            </a>
 
             <div class="navbar-menu">
                 <a href="/">Home</a>
