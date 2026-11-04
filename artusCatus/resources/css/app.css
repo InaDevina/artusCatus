@@ -2,6 +2,9 @@
    ARTUS CATUS - GLOBAL STYLES
 ======================================== */
 
+/* [BARU] Font dari Google Fonts: Fraunces (judul) + DM Sans (teks) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@500;600;700&display=swap');
+
 :root {
     --cerulean: #8EB1D1;
     --baby-blue: #A7C7E7;
@@ -21,6 +24,15 @@
     --midnight-light: #30466E;
     --shadow-soft: 0 4px 14px rgba(28, 43, 72, 0.08);
     --shadow-hover: 0 12px 28px rgba(28, 43, 72, 0.16);
+
+    /* [BARU] font */
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', Arial, sans-serif;
+
+    /* [BARU] warna untaian manik-manik (lihat bagian BEAD STRAND) */
+    --bead-a: var(--cerulean);
+    --bead-b: var(--midnight-light);
+    --thread: var(--baby-blue);
 }
 
 /* Reset */
@@ -35,7 +47,7 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body); /* [UBAH] dari Arial */
     color: var(--midnight);
     background-color: var(--bg-soft); /* [UBAH] dari var(--white) */
     /* [BARU] motif titik halus + glow biru, biar background gak polos */
@@ -58,6 +70,22 @@ img {
     max-width: 100%;
 }
 
+/* [BARU] semua judul pakai font Fraunces */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* [BARU] garis fokus saat navigasi pakai keyboard */
+a:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--cerulean);
+    outline-offset: 3px;
+}
+
 /* ========================================
    SHARED LAYOUT
 ======================================== */
@@ -69,17 +97,91 @@ img {
 }
 
 .section {
-    margin-bottom: 80px;
+    margin-bottom: 96px; /* [UBAH] dari 80px, lebih lega */
 }
 
 .section h2 {
-    font-size: clamp(26px, 3vw, 34px);
-    line-height: 1.2;
+    font-size: clamp(30px, 3.4vw, 42px); /* [UBAH] dari clamp(26px, 3vw, 34px) */
+    line-height: 1.15;
     margin-bottom: 16px;
 }
 
 .section-intro {
-    max-width: 420px;
+    max-width: 520px; /* [UBAH] dari 420px */
+}
+
+/* ========================================
+   BEAD STRAND (motif manik-manik khas Artus Catus)
+   Untaian kecil: 2 warna manik + 1 benang.
+   Warnanya bisa diganti lewat variabel --bead-a, --bead-b, --thread
+======================================== */
+
+/* 1. Gambar untaiannya (dipakai di semua tempat di bawah) */
+.section h2::after,
+.testimonial-section h2::after,
+.faq-section h2::after,
+.contact-section h2::after,
+.order-section h2::after,
+.hero-content h1::after,
+.about-header::after,
+.catalog-header::after,
+.contact-header::after,
+.site-footer::before {
+    content: "";
+    width: 132px;
+    height: 12px;
+    background:
+        radial-gradient(circle at 11px 6px, var(--bead-a) 5px, transparent 5.5px) 0 0 / 44px 12px repeat-x,
+        radial-gradient(circle at 33px 6px, var(--bead-b) 4px, transparent 4.5px) 0 0 / 44px 12px repeat-x,
+        linear-gradient(var(--thread), var(--thread)) 0 5px / 100% 2px no-repeat;
+}
+
+/* 2. Posisi: di bawah judul, rata kiri */
+.section h2::after,
+.testimonial-section h2::after,
+.hero-content h1::after {
+    display: block;
+    margin-top: 14px;
+}
+
+/* 3. Posisi: di bawah judul, rata tengah */
+.faq-section h2::after,
+.contact-section h2::after,
+.order-section h2::after {
+    display: block;
+    margin: 14px auto 0;
+}
+
+/* 4. Posisi: di dasar header halaman (About, Catalog, Contact) */
+.about-header,
+.catalog-header,
+.contact-header {
+    position: relative;
+}
+
+.about-header::after,
+.catalog-header::after,
+.contact-header::after {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+}
+
+/* 5. Posisi: di atas teks footer */
+.site-footer::before {
+    display: block;
+    margin: 0 auto 14px;
+}
+
+/* 6. Warna khusus di latar biru muda (hero + header halaman) */
+.hero,
+.about-header,
+.catalog-header,
+.contact-header {
+    --bead-a: var(--midnight-light);
+    --bead-b: var(--white);
+    --thread: var(--cerulean);
 }
 
 .section-description,
@@ -100,43 +202,65 @@ img {
 ======================================== */
 
 .hero {
-    min-height: 380px;
+    position: relative; /* [BARU] supaya lingkaran dekorasi bisa diposisikan */
+    min-height: 480px;  /* [UBAH] dari 380px */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr; /* [UBAH] teks sedikit lebih lebar */
     align-items: center;
-    gap: 32px;
+    gap: 56px;
 
-    margin: 24px 0 64px;
-    padding: 44px;
+    margin: 8px 0 88px; /* [UBAH] dari 28px, karena navbar sekarang sudah punya jarak bawah */
+    padding: 64px; /* [UBAH] dari 44px */
 
-    /* [UBAH] dari warna flat jadi gradasi biru */
-    background: linear-gradient(135deg, var(--light-blue-grey) 0%, var(--baby-blue) 100%);
-    border-radius: 24px;
-    box-shadow: var(--shadow-soft); /* [BARU] */
+    /* [UBAH] gradasi dari platinum ke baby blue */
+    background: linear-gradient(135deg, var(--platinum) 0%, var(--light-blue-grey) 55%, var(--baby-blue) 100%);
+    border-radius: 32px;
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
 }
 
+/* [BARU] lingkaran lembut di belakang foto biar ada kedalaman */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    width: 520px;
+    height: 520px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* [BARU] isi hero harus di atas lingkaran */
+.hero-content,
+img.hero-image {
+    position: relative;
+}
+
 .hero-content h1 {
-    font-size: clamp(34px, 4vw, 54px);
-    line-height: 1.15;
-    margin-bottom: 20px;
+    font-size: clamp(38px, 4.6vw, 62px); /* [UBAH] dari clamp(34px, 4vw, 54px) */
+    line-height: 1.08;
+    margin-bottom: 22px;
 }
 
 .hero-content p {
-    max-width: 480px;
-    font-size: 15px;
+    max-width: 460px;
+    font-size: 17px; /* [UBAH] dari 15px */
+    line-height: 1.7;
     color: var(--midnight);
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .button-primary {
     display: inline-block;
-    padding: 11px 24px;
+    padding: 14px 32px; /* [UBAH] dari 11px 24px, tombol lebih besar */
 
     color: var(--white);
     background: linear-gradient(135deg, var(--midnight), var(--midnight-light)); /* [UBAH] */
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px; /* [UBAH] dari 14px */
+    font-weight: 500;
 
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(28, 43, 72, 0.25); /* [BARU] */
@@ -153,23 +277,74 @@ img {
     min-height: 260px;
 }
 
-/* [BARU] foto hero (tag <img>): tinggi tetap + dipotong rapi, bukan ukuran asli foto */
+/* [UBAH] foto hero: bulat penuh + garis bingkai tipis */
 img.hero-image {
-    height: 380px;
+    justify-self: center;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1; /* kotak sama sisi, jadi saat dibulatkan hasilnya lingkaran */
+    height: auto;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: 50%;
+    outline: 2px solid var(--midnight-light);
+    outline-offset: 12px;
     box-shadow: var(--shadow-hover);
+}
+
+/* [BARU] satu animasi saat halaman dibuka: teks lalu foto muncul naik pelan */
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.hero-content {
+    animation: rise-in 0.7s ease-out both;
+}
+
+img.hero-image {
+    animation: rise-in 0.7s ease-out 0.15s both;
+}
+
+/* [BARU] hormati pengguna yang mematikan animasi di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .hero-content,
+    img.hero-image {
+        animation: none;
+    }
 }
 
 /* ========================================
    WHY ARTUS CATUS (ABOUT SECTION - HOME)
 ======================================== */
 
+/* [UBAH] jadi panel biru gelap supaya halaman punya kontras terang-gelap */
 .about-section {
+    --bead-b: var(--platinum); /* manik kedua dibuat terang agar kelihatan di latar gelap */
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 60px;
+    gap: 64px;
+
+    padding: 64px;
+    background: linear-gradient(135deg, var(--midnight) 0%, var(--midnight-light) 100%);
+    color: var(--white);
+    border-radius: 32px;
+    box-shadow: var(--shadow-hover);
+}
+
+.about-section .section-intro p {
+    color: var(--light-blue-grey);
 }
 
 .stats-grid {
@@ -178,31 +353,22 @@ img.hero-image {
     gap: 40px 60px;
 }
 
-/* [BARU] angka statistik jadi kartu putih biar gak polos */
+/* [UBAH] statistik: bukan kartu lagi, cukup angka besar + garis tipis di atasnya */
 .stat-item {
-    padding: 24px;
-    background-color: var(--white);
-    border: 1px solid var(--light-blue-grey);
-    border-left: 4px solid var(--baby-blue);
-    border-radius: 14px;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.stat-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
+    padding-top: 20px;
+    border-top: 1px solid rgba(167, 199, 231, 0.35);
 }
 
 .stat-item h3 {
-    font-size: 34px;
+    font-size: clamp(38px, 4vw, 52px); /* [UBAH] dari 34px */
+    line-height: 1.1;
     margin-bottom: 6px;
-    color: var(--midnight-light); /* [BARU] */
+    color: var(--white);
 }
 
 .stat-item p {
-    font-size: 13px;
-    color: var(--text-muted);
+    font-size: 14px;
+    color: var(--baby-blue);
 }
 
 
@@ -210,7 +376,7 @@ img.hero-image {
 
 .about-page {
     width: 100%;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body); /* [UBAH] dari Arial */
     color: #354247;
 }
 
@@ -405,11 +571,12 @@ img.hero-image {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease; /* [BARU] untuk efek zoom saat hover */
 }
 
 .product-card h3 {
-    font-size: 17px;
-    line-height: 2;
+    font-size: 19px; /* [UBAH] dari 17px */
+    line-height: 1.4; /* [UBAH] dari 2 */
     margin-bottom: 6px;
 }
 
@@ -423,16 +590,20 @@ img.hero-image {
 .product-grid .product-card {
     background-color: var(--white);
     border: 1px solid var(--light-blue-grey);
-    border-radius: 14px;
+    border-radius: 20px; /* [UBAH] dari 14px */
     box-shadow: var(--shadow-soft);
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+/* [UBAH] hover: fotonya yang zoom pelan, kartunya tidak naik */
 .product-grid .product-card:hover {
-    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
     border-color: var(--cerulean);
+}
+
+.product-grid .product-card:hover .product-image img {
+    transform: scale(1.06);
 }
 
 .product-grid .product-card .product-image {
@@ -461,10 +632,11 @@ img.hero-image {
 }
 
 .testimonial-card {
+    position: relative; /* [BARU] untuk tanda kutip di pojok */
     overflow: hidden;
     background-color: var(--white);
     border: 1px solid var(--light-blue-grey);
-    border-radius: 12px;
+    border-radius: 20px; /* [UBAH] dari 12px */
     box-shadow: var(--shadow-soft); /* [BARU] */
     transition: transform 0.25s ease, box-shadow 0.25s ease; /* [BARU] */
 }
@@ -472,6 +644,19 @@ img.hero-image {
 .testimonial-card:hover {
     transform: translateY(-4px); /* [BARU] */
     box-shadow: var(--shadow-hover);
+}
+
+/* [BARU] tanda kutip besar di pojok kanan atas kartu */
+.testimonial-card::before {
+    content: "\201C"; /* karakter “ */
+    position: absolute;
+    top: 6px;
+    right: 22px;
+    font-family: var(--font-heading);
+    font-size: 88px;
+    line-height: 1;
+    color: var(--baby-blue);
+    opacity: 0.6;
 }
 
 .testimonial-image {
@@ -506,6 +691,13 @@ img.hero-image {
 .testimonial-content span {
     color: var(--text-muted);
     font-size: 13px;
+}
+
+/* [BARU] bintang rating emas. Harus lebih spesifik dari rule span di atas,
+   kalau tidak warnanya ketimpa jadi abu-abu */
+.testimonial-content .testimonial-rating span {
+    color: #F4B400;
+    font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -601,10 +793,7 @@ img.hero-image {
 .testimonial-section h2 {
     font-size: clamp(26px, 3vw, 34px);
     margin-bottom: 20px;
-    /* [BARU] garis aksen di bawah judul */
-    display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 4px solid var(--baby-blue);
+    /* [UBAH] garis biru di bawah judul diganti motif manik-manik (lihat BEAD STRAND) */
 }
 
 .testimonial-list {
@@ -730,17 +919,31 @@ img.hero-image {
     }
 
     .hero {
-        padding: 28px;
+        gap: 48px;
+        padding: 40px 28px;
+    }
+
+    .hero::before {
+        display: none; /* lingkaran dekorasi disembunyikan di layar kecil */
     }
 
     img.hero-image {
-        height: 240px;
+        max-width: 320px;
+    }
+
+    .about-section {
+        gap: 40px;
+        padding: 40px 28px;
     }
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding: 32px 22px;
+    }
+
     img.hero-image {
-        height: 200px;
+        max-width: 260px;
     }
 }
 
@@ -749,68 +952,90 @@ img.hero-image {
    NAVBAR
 ======================================== */
 
+/* [UBAH] pembungkus navbar sekarang transparan, bentuk kapsulnya ada di .navbar */
 .site-header {
     width: 100%;
-    /* [UBAH] navbar jadi biru gelap (midnight) supaya beda dari judul halaman */
-    background: linear-gradient(90deg, var(--midnight) 0%, var(--midnight-light) 100%);
-    border-bottom: 3px solid var(--baby-blue); /* [UBAH] garis aksen biru muda */
-    box-shadow: 0 4px 14px rgba(28, 43, 72, 0.25); /* [BARU] */
-    /* [BARU] navbar tetap nempel di atas saat scroll */
+    padding-top: 14px;   /* [BARU] jarak dari tepi atas layar, biar terlihat melayang */
+    margin-bottom: 20px; /* [BARU] jarak ke konten di bawahnya */
+    /* navbar tetap nempel di atas saat scroll */
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+/* [UBAH] navbar jadi kapsul melayang (bukan kotak penuh lagi) */
 .navbar {
-    width: 92%;
-    max-width: 1440px;
-    min-height: 82px;
+    width: calc(100% - var(--page-padding) * 2); /* [UBAH] dari 92%, supaya selalu sejajar dengan konten */
+    max-width: var(--container-width);
+    min-height: 72px; /* [UBAH] dari 82px */
     margin: 0 auto;
+    padding: 0 12px 0 28px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 24px;
+
+    background: linear-gradient(90deg, var(--midnight) 0%, var(--midnight-light) 100%);
+    border: 1px solid rgba(167, 199, 231, 0.25);
+    border-radius: 999px;
+    box-shadow: var(--shadow-hover);
 }
 
 .navbar-logo {
     color: var(--white); /* [UBAH] dari var(--midnight) karena navbar sekarang gelap */
-    font-size: 23px;
+    font-family: var(--font-heading); /* [BARU] */
+    font-size: 24px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-decoration: none;
     white-space: nowrap;
 }
 
+/* [BARU] titik kecil di depan logo (mengingatkan pada manik-manik) */
+.navbar-logo::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 12px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--baby-blue);
+}
+
+/* [UBAH] menu dibungkus kapsul sendiri di dalam navbar */
 .navbar-menu {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 4px; /* [UBAH] dari 32px, jarak antar menu sekarang dari padding link */
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
 }
 
 .navbar-menu a {
-    position: relative; /* [BARU] */
-    padding: 4px 0;     /* [BARU] */
-    color: var(--platinum); /* [UBAH] dari var(--midnight) */
-    font-size: 14px;
+    padding: 10px 22px; /* [UBAH] dari 4px 0, jadi area klik berbentuk pill */
+    color: var(--platinum);
+    font-size: 15px;
+    font-weight: 500;
     text-decoration: none;
-    transition: color 0.2s ease;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* [UBAH] hover dari ganti warna putih (kurang kebaca) jadi garis bawah animasi */
-.navbar-menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--baby-blue); /* [UBAH] dari var(--midnight) */
-    transition: width 0.25s ease;
+/* [UBAH] hover: latar pill tipis (sebelumnya garis bawah) */
+.navbar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: var(--white);
 }
 
-.navbar-menu a:hover::after {
-    width: 100%;
+/* [BARU] menu untuk halaman yang sedang dibuka (class "active" dipasang di Blade) */
+.navbar-menu a.active,
+.navbar-menu a[aria-current="page"] {
+    background-color: var(--baby-blue);
+    color: var(--midnight);
 }
 
 /* ========================================
@@ -818,7 +1043,9 @@ img.hero-image {
 ======================================== */
 
 .site-footer {
-    padding: 24px 5%;
+    --bead-b: var(--platinum); /* manik kedua dibuat terang agar kelihatan di latar gelap */
+
+    padding: 32px 5% 28px; /* [UBAH] dari 24px 5% */
     margin-top: 40px;
 
     /* [UBAH] dari warna flat jadi gradasi */
@@ -833,8 +1060,9 @@ img.hero-image {
     .navbar {
         flex-direction: column;
         justify-content: center;
-        padding: 18px 0;
-        gap: 16px;
+        padding: 16px 12px;
+        gap: 14px;
+        border-radius: 28px; /* [BARU] kapsul yang tinggi di HP diganti sudut membulat biasa */
     }
 
     .navbar-logo {
@@ -844,10 +1072,11 @@ img.hero-image {
     .navbar-menu {
         justify-content: center;
         flex-wrap: wrap;
-        gap: 12px 20px;
+        gap: 2px;
     }
 
     .navbar-menu a {
+        padding: 8px 12px;
         font-size: 13px;
     }
 }
@@ -1223,4 +1452,5 @@ img.hero-image {
     .order-section {
         padding: 30px 0 45px;
     }
+
 }
